@@ -39,8 +39,6 @@ public class MoviesiteApplication {
 			categoryRepository.save(war);
 			Category childrensmovie = new Category("Children's movie");
 			categoryRepository.save(childrensmovie);
-			Category mystery = new Category("Mystery");
-			categoryRepository.save(mystery);
 			Category horror = new Category("Horror");
 			categoryRepository.save(horror);
 			Category fantasy = new Category("Fantasy");
@@ -60,25 +58,25 @@ public class MoviesiteApplication {
 			streamingServiceRepository.save(skyshowtime);
 
 			log.info("save a couple of movies");
-			movieRepository.save(new Movie("Transformers One", "Josh Cooley", "Transformers origin story. Fantastic childrens movie that is supprisingly good for adults too.", 
+			movieRepository.save(new Movie("Transformers One", "Josh Cooley", "Transformers origin story. Fantastic childrens movie that is supprisingly good for adults too. Good humour, interesting story even for those that don't care about Transformers and hard hitting action.", 
 			2024, 90, childrensmovie, new HashSet<>(Set.of(none))));
-            movieRepository.save(new Movie("Whiplash", "Damien Chazelle", "Motivating and realistic ", 
-			2014, 85, drama, new HashSet<>(Set.of(none))));
-            movieRepository.save(new Movie("Godzilla Minus One", "Takashi Yamazaki", "Fantastic Godzilla origin story. Set in postwar Japan", 
+            movieRepository.save(new Movie("Whiplash", "Damien Chazelle", "Movie about a aspiring drummer, who is slaving himself away to succeed. Great charecters, surprising yet realistic feeling story.", 
+			2014, 95, drama, new HashSet<>(Set.of(none))));
+            movieRepository.save(new Movie("Godzilla Minus One", "Takashi Yamazaki", "Fantastic Godzilla origin story. Set in postwar Japan where Godzilla is being encountered for the first time. Great balance of tough expectations of soldiers, fantastic charecters and little action for the nerds. Surprisingly serious movie with very little humour.", 
 			2023, 95, war, new HashSet<>(Set.of(netflix))));
 
-            movieRepository.save(new Movie("Fight Club", "David Fincher", "Truly captivating movie that you just have to see twice to really soak in all the nyances.", 
+            movieRepository.save(new Movie("Fight Club", "David Fincher", "Truly captivating movie that you just have to see at least twice to really soak in all the nyances. When I saw this for the first time I made three of my friends watch it with me and needless to say they all loved it.", 
 			1999, 100, action, new HashSet<>(Set.of(disney))));
-            movieRepository.save(new Movie("Dark Knight", "Christopher Nolan", "This is THE batman movie.", 
+            movieRepository.save(new Movie("Dark Knight", "Christopher Nolan", "Joker wreaks havoc in Gotham and Batman comes to the rescue. Heath Ledger as a Joker is a match made in heaven. I have seen many Batman movies, but Christian Bale is my favourite Batman.", 
 			2008, 80, action, new HashSet<>(Set.of(netflix))));
-            movieRepository.save(new Movie("Rogue one", "Gareth Edwards", "", 
-			2016, 90, scifi, new HashSet<>(Set.of(disney))));
+            movieRepository.save(new Movie("Rogue one", "Gareth Edwards", "Star Wars movie that fits right in the middle ot the third and fourth movie. Small group of rebels go on a tough mission to give the rebels a chance at a victory. Hard hitting action, no unnecessary fluff, great story.", 
+			2016, 80, scifi, new HashSet<>(Set.of(disney))));
 
-			movieRepository.save(new Movie("Interstellar", "Christopher Nolan", "", 
+			movieRepository.save(new Movie("Interstellar", "Christopher Nolan", "Interstellar is set in a dystopian earth where isn't much food left and humanity is facing extinction in the near future. Astronauts go on a mission to find better planet to live. In space the time travels differently in some zones and the pilots watch through videomessages how their family grows without them. Tough watch, but a great movie with fantastic cast.", 
 			2014, 90, scifi, new HashSet<>(Set.of(max, primevideo))));
-			movieRepository.save(new Movie("Shutter Island", "Martin Scorsese", "", 
-			2010, 85, mystery, new HashSet<>(Set.of(skyshowtime))));
-			movieRepository.save(new Movie("Black Swan", "Darren Aronofsky", "", 
+			movieRepository.save(new Movie("Shutter Island", "Martin Scorsese", "Two marshals go to a hospital for the criminally insane to investigate a disappearance of a patient. The main charecter also has a ulterior motive as he believes his wifes killer resides in the hospital. This psychological horror movie truly blew me away, it makes me anxious and curious.", 
+			2010, 85, horror, new HashSet<>(Set.of(skyshowtime))));
+			movieRepository.save(new Movie("Black Swan", "Darren Aronofsky", "Ballet dancer goes insane trying to perfect her swan lake act. Bizarre, anxiety inducing yet beautiful movie.", 
 			2010, 85, horror, new HashSet<>(Set.of(disney))));
 			
 			movieRepository.save(new Movie("Top gun", "Tony Scott", "", 
