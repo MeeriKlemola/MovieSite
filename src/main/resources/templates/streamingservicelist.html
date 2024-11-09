@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Streaming service list</title>
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Streaming services</h1>
+
+    <div class="col-md-4">
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Movies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="streamingservice, stat : ${streamingservices}">
+                <th:block th:if="${stat.index > 0}">
+                    <td th:text="${streamingservice.serviceName}"> </td>
+                    <td>
+                        <ul><li th:each="movie : ${streamingservice.movies}" th:text="${movie.title}"> </li></ul>
+                    </td>
+                    <td>
+                        <a th:href="@{/editstreamingservice/{id}(id=${streamingservice.id})}" class="btn btn-warning"
+                            role="button">Edit</a>
+                        <a th:href="@{/deletestreamingservice/{id}(id=${streamingservice.id})}" class="btn btn-danger"
+                            role="button">Delete</a>
+                    </td>
+                </th:block>
+            </tr>
+        </tbody>
+    </table>
+    <p><a th:href="@{/addstreamingservice}" class="btn btn-success" role="button">Add streaming service</a></p>
+
+</body>
+
+</html>

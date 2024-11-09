@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add streaming service</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <style>
+        #categorylist {
+            width: 300px;
+        }
+        #streamingServiceList {
+            width: 300px;
+        }
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add a streaming service</h1>
+    <div>
+        <form th:object="${streamingservice}" th:action="@{/save}" method="post">
+            <div class="form-group">
+                <label for="serviceName">Name</label>
+                <input type="text" id="serviceName" th:field="*{serviceName}" />
+                <div style="clear: both; display: block; height: 10px;"></div>
+            </div>
+
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+</body>
+
+</html>

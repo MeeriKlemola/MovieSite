@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Read more</title>
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Full details</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Publication year</th>
+                <th>Category</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td th:text="${movie.title}"></td>
+                <td th:text="${movie.director}"></td>
+                <td th:text="${movie.publicationYear}"></td>
+                <td th:text="${movie.category.categoryName}"></td>
+                <td th:text="${movie.rating}"></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <th>Where to watch</th>
+            </tr>
+            <tr th:each="service : ${movie.streamingServices}">
+                <td th:text="${movie.description}"></td>
+                <td th:text="${service.serviceName}"> </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><a th:href="@{/movielist}">Back to the list</a></p>
+
+</body>
+
+</html>

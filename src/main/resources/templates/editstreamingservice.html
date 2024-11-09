@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Edit Streaming service</title>
+    <style>
+        #categorylist {
+            width: 300px;
+        }
+
+        body {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Edit streaming service</h1>
+    <form th:object="${streamingservice}" th:action="@{/save}" method="post">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="serviceName">Name</label>
+            <input type="text" id="serviceName" th:field="*{serviceName}" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="#" th:href="@{/streamingservicelist}">Back to the streaming service list</a>
+
+</body>
+
+</html>

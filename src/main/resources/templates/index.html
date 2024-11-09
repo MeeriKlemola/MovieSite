@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Movie site</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to my movie site!</h1>
+    <p>Are you in the mood to browse through a couple of my favourite movies or watch one yourself and see where they are streaming? Click on the icon!</p>
+
+    <a th:href="@{/movielist}">
+        <img src="/images/film.png" alt="film roll">
+    </a>
+    <a th:href="@{/streamingservicelist}">
+        <img src="/images/stream.png" alt="3d glasses">
+    </a>
+
+    <!-- These pictures are copyright free and they are from pixabay from the "Jozefm84" account. -->
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Movielist</title>
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Movies</h1>
+
+    <div class="col-md-4">
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Publication year</th>
+                <th>Rating</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tr th:each="movie : ${movies}">
+            <td th:text="${movie.title}"> </td>
+            <td th:text="${movie.director}"> </td>
+            <td th:text="${movie.publicationYear}"> </td>
+            <td th:text="${movie.rating}"> </td>
+            <td th:text="${movie.category.categoryName}"> </td>
+            <td>
+                <a th:href="@{/review/{id}(id=${movie.id})}" class="btn btn-outline-info" role="button">
+                    Read more</a>
+            </td>
+            <td>
+                <a th:href="@{/edit/{id}(id=${movie.id})}" class="btn btn-warning" role="button">
+                    Edit</a>
+            </td>
+            <td>
+                <a th:href="@{/delete/{id}(id=${movie.id})}" class="btn btn-danger" role="button">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </table>
+    <p><a th:href="@{/addmovie}" class="btn btn-success" role="button">Add movie</a></p>
+
+</body>
+
+</html>
