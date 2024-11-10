@@ -21,7 +21,7 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title, director, description;
+    private String title, director, description, review;
     private Integer publicationYear, rating;
 
     @ManyToOne // many movies to one category
@@ -38,11 +38,12 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String title, String director, String description, Integer publicationYear, Integer rating,
+    public Movie(String title, String director, String description, String review, Integer publicationYear, Integer rating,
             Category category, Set<StreamingService> streamingServices) {
         this.title = title;
         this.director = director;
         this.description = description;
+        this.review = review;
         this.publicationYear = publicationYear;
         this.rating = rating;
         this.category = category;
@@ -80,6 +81,14 @@ public class Movie {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
 
     public Integer getPublicationYear() {
         return publicationYear;
@@ -115,10 +124,11 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie [id= " + id + ", title= " + title + ", director= " + director + ", description= " + description
-                + ", publicationYear= " + publicationYear + ", rating= " + rating + ", category= " + category
-                + ", streamingServices= " + "]";
+        return "Movie [id=" + id + ", title=" + title + ", director=" + director + ", description=" + description
+                + ", review=" + review + ", publicationYear=" + publicationYear + ", rating=" + rating + ", category="
+                + category + "]";
     }
+
 
 
 }

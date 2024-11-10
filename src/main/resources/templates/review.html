@@ -35,10 +35,12 @@
             </tr>
             <tr>
                 <th>Description</th>
+                <th>Review</th>
                 <th>Where to watch</th>
             </tr>
             <tr th:each="service : ${movie.streamingServices}">
                 <td th:text="${movie.description}"></td>
+                <td th:text="${movie.review}"></td>
                 <td th:text="${service.serviceName}"> </td>
             </tr>
         </tbody>
