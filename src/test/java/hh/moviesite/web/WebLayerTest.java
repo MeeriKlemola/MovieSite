@@ -52,4 +52,12 @@ public class WebLayerTest {
         .andExpect(content().string(containsString("Streaming services")));
     }
 
+    @Test
+    public void testStreamingCategoryList() throws Exception {
+        this.mockMvc.perform(get("/categorylist"))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andExpect(content().string(containsString("Categories")));
+    }
+
 }
