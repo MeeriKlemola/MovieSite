@@ -72,18 +72,18 @@ public class MoviesiteApplication {
             movieRepository.save(new Movie("Rogue one", "Gareth Edwards", "Star Wars movie that fits right in the middle ot the third and fourth movie. Small group of rebels go on a tough mission to give the rebels a chance at a victory. Hard hitting action, no unnecessary fluff, great story.", 
 			2016, 80, scifi, new HashSet<>(Set.of(disney))));
 
-			movieRepository.save(new Movie("Interstellar", "Christopher Nolan", "Interstellar is set in a dystopian earth where isn't much food left and humanity is facing extinction in the near future. Astronauts go on a mission to find better planet to live. In space the time travels differently in some zones and the pilots watch through videomessages how their family grows without them. Tough watch, but a great movie with fantastic cast.", 
+			movieRepository.save(new Movie("Interstellar", "Christopher Nolan", "Interstellar is set in a dystopian earth where isn't much food left and humanity is facing extinction in the near future. Astronauts go on a mission to find better planet to live. In space the time travels differently in some zones and the pilots watch through videomessages how their family grows without them. Tough watch, but a great movie with fantastic cast. The soundtrack is absolutely amazing. Fantastic music to listen while concentrating on work.", 
 			2014, 90, scifi, new HashSet<>(Set.of(max, primevideo))));
 			movieRepository.save(new Movie("Shutter Island", "Martin Scorsese", "Two marshals go to a hospital for the criminally insane to investigate a disappearance of a patient. The main charecter also has a ulterior motive as he believes his wifes killer resides in the hospital. This psychological horror movie truly blew me away, it makes me anxious and curious.", 
 			2010, 85, horror, new HashSet<>(Set.of(skyshowtime))));
 			movieRepository.save(new Movie("Black Swan", "Darren Aronofsky", "Ballet dancer goes insane trying to perfect her swan lake act. Bizarre, anxiety inducing yet beautiful movie.", 
 			2010, 85, horror, new HashSet<>(Set.of(disney))));
 			
-			movieRepository.save(new Movie("Top gun", "Tony Scott", "", 
+			movieRepository.save(new Movie("Top gun", "Tony Scott", "Top Gun is a school for the very best fighterpilots. This movie is full of action, romance and great charecters and chemistry.", 
 			1986, 95, action, new HashSet<>(Set.of(netflix, skyshowtime))));
-			movieRepository.save(new Movie("Fantastic beasts and where to find them", "David Yates", "", 
+			movieRepository.save(new Movie("Fantastic beasts and where to find them", "David Yates", "Main charecter Newt Scamander lives in the Harry Potter universe and tends magical animals. Must watch for the mytchical animal lovers!", 
 			2016, 80, fantasy, new HashSet<>(Set.of(max))));
-			movieRepository.save(new Movie("Watchmen", "Zack Snyder", "", 
+			movieRepository.save(new Movie("Watchmen", "Zack Snyder", "Set in the year 1985. Main charecter is a vigilante \"detective\" on a case. Fantastic superhero movie for those that want more grown up, but still eventful movie.", 
 			2009, 90, scifi, new HashSet<>(Set.of(primevideo))));
 
 
