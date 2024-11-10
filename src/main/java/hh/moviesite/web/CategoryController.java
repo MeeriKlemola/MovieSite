@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import hh.moviesite.domain.Category;
 import hh.moviesite.domain.CategoryRepository;
@@ -38,6 +41,29 @@ public class CategoryController {
         categoryRepository.save(category);
 
         return "redirect:/categorylist"; // categorylist.html
+    }
+
+    // Poistaa id:llä kategorian
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteCategory(@PathVariable("id") Long categoryId, Model model) {
+        categoryRepository.deleteById(categoryId);
+
+        return "redirect:../categorylist"; // movielist.html
+    }
+
+    // Editoi id:llä kategoriaa
+    // @PreAuthorize
+    @GetMapping("/edit/{id}")
+    public String editCategoryForm(@PathVariable("id") Long categoryId, Model model) {
+        model.addAttribute("category", categoryRepository.findById(categoryId));
+
+        return "editcategory"; // editcategory.html
+    }
+
+    // RestController jatkoa
+    @GetMapping("/categories")
+    public String categoriesPage() {
+        return "categories";
     }
 
 }

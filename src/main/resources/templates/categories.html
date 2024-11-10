@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category List</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Category List</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody id="categoriesTable">
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                url: '/api/categories',
+                method: 'GET',
+                success: function(data) {
+                    var rows = '';
+                    data.forEach(function(category) {
+                        rows += '<tr>' +
+                                    '<td>' + category.categoryName + '</td>' +
+                                '</tr>';
+                    });
+                    $('#categoriesTable').html(rows);
+                },
+            });
+        });
+    </script>
+</body>
+</html>

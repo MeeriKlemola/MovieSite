@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Edit Category</title>
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Edit category</h1>
+    <form th:object="${category}" th:action="@{/save}" method="post">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="categoryname">Name</label>
+            <input type="text" id="categoryName" th:field="*{categoryName}" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="#" th:href="@{/categorylist}">Back to the categories</a>
+
+</body>
+
+</html>
