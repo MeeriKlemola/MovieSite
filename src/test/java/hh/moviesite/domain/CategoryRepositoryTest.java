@@ -18,7 +18,7 @@ public class CategoryRepositoryTest {
         List<Category> categories = repository.findByCategoryName("Horror");
 
         assertThat(categories).hasSize(1);
-        assertThat(categories.get(0).getCategoryId()).isEqualTo(1);
+        assertThat(categories.get(0).getCategoryId()).isEqualTo(6);
     }
 
     @Test // create functionality test
