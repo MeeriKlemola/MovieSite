@@ -3,6 +3,7 @@ package hh.moviesite.web;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,11 @@ public class MovieController {
         return "index"; // index.html
     }
 
+    @RequestMapping(value = "/login")
+    public String login() {
+        return "login"; //login.html
+    }
+
     // http://localhost:8080/movielist
     @GetMapping(value = "/movielist")
     public String getMovieList(Model model) {
@@ -43,6 +49,7 @@ public class MovieController {
     }
 
     // http://localhost:8080/addmovie
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/addmovie")
     public String addMovie(Model model) {
         model.addAttribute("movie", new Movie());
@@ -77,7 +84,7 @@ public class MovieController {
     }
 
     // poistaa id:llä kirjan
-    // @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteMovie(@PathVariable("id") Long movieId, Model model) {
         movieRepository.deleteById(movieId);
@@ -86,7 +93,7 @@ public class MovieController {
     }
 
     // editoi id:llä kirjaa
-    // @PreAuthorize
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable("id") Long movieId, Model model) {
         model.addAttribute("movie", movieRepository.findById(movieId));

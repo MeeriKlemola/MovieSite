@@ -11,6 +11,8 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import hh.moviesite.domain.AppUser;
+import hh.moviesite.domain.AppUserRepository;
 import hh.moviesite.domain.Category;
 import hh.moviesite.domain.CategoryRepository;
 import hh.moviesite.domain.Movie;
@@ -27,7 +29,7 @@ public class MoviesiteApplication {
 	}
 
 	@Bean
-	public CommandLineRunner fetchData(CategoryRepository categoryRepository, MovieRepository movieRepository, StreamingServiceRepository streamingServiceRepository) {
+	public CommandLineRunner fetchData(CategoryRepository categoryRepository, MovieRepository movieRepository, StreamingServiceRepository streamingServiceRepository, AppUserRepository appUserRepository) {
 		return (args) -> {
 			Category action = new Category("Action");
 			categoryRepository.save(action);
@@ -103,6 +105,9 @@ public class MoviesiteApplication {
 			for (Movie movie : movieRepository.findAll()) {
 				log.info(movie.toString());
 			}
+
+			AppUser admin = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			appUserRepository.save(admin);
 
 		};
 	}

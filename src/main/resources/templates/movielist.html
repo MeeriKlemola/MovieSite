@@ -17,7 +17,13 @@
 
     <h1>Movies</h1>
 
-    <div class="col-md-4">
+    <div class="col-md-4" sec:authorize="hasAuthority('ADMIN')">
+        <h3>Signed in: <span sec:authentication="name"></span></h3>
+    </div>
+    <div class="col-md-4" style="padding:20px 0" sec:authorize="hasAuthority('ADMIN')">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
+        </form>
     </div>
 
     <table class="table table-striped">
@@ -28,6 +34,7 @@
                 <th>Publication year</th>
                 <th>Rating</th>
                 <th>Category</th>
+                <th sec:authorize="hasAuthority('ADMIN')"></th>
             </tr>
         </thead>
         <tr th:each="movie : ${movies}">
@@ -40,18 +47,20 @@
                 <a th:href="@{/review/{id}(id=${movie.id})}" class="btn btn-outline-info" role="button">
                     Read more</a>
             </td>
-            <td>
+            <td sec:authorize="hasAuthority('ADMIN')">
                 <a th:href="@{/edit/{id}(id=${movie.id})}" class="btn btn-warning" role="button">
                     Edit</a>
             </td>
-            <td>
+            <td sec:authorize="hasAuthority('ADMIN')">
                 <a th:href="@{/delete/{id}(id=${movie.id})}" class="btn btn-danger" role="button">
                     Delete
                 </a>
             </td>
         </tr>
     </table>
-    <p><a th:href="@{/addmovie}" class="btn btn-success" role="button">Add movie</a></p>
+    <td sec:authorize="hasAuthority('ADMIN')">
+        <p><a th:href="@{/addmovie}" class="btn btn-success" role="button">Add movie</a></p>
+    </td>
 
 </body>
 

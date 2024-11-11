@@ -25,6 +25,7 @@
             <tr>
                 <th>Service</th>
                 <th>Movies</th>
+                <th sec:authorize="hasAuthority('ADMIN')"> </th>
             </tr>
         </thead>
         <tbody>
@@ -32,11 +33,15 @@
                 <th:block th:if="${stat.index > 0}">
                     <td th:text="${streamingservice.serviceName}"> </td>
                     <td>
-                        <ul><li th:each="movie : ${streamingservice.movies}" th:text="${movie.title}"> </li></ul>
+                        <ul>
+                            <li th:each="movie : ${streamingservice.movies}" th:text="${movie.title}"> </li>
+                        </ul>
                     </td>
-                    <td>
+                    <td sec:authorize="hasAuthority('ADMIN')">
                         <a th:href="@{/editstreamingservice/{id}(id=${streamingservice.id})}" class="btn btn-warning"
                             role="button">Edit</a>
+                    </td>
+                    <td sec:authorize="hasAuthority('ADMIN')">
                         <a th:href="@{/deletestreamingservice/{id}(id=${streamingservice.id})}" class="btn btn-danger"
                             role="button">Delete</a>
                     </td>
@@ -44,7 +49,9 @@
             </tr>
         </tbody>
     </table>
+    <td sec:authorize="hasAuthority('ADMIN')">
     <p><a th:href="@{/addstreamingservice}" class="btn btn-success" role="button">Add streaming service</a></p>
+    </td>
 
 </body>
 
