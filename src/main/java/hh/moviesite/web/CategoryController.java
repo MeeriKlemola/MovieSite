@@ -1,6 +1,7 @@
 package hh.moviesite.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ public class CategoryController {
     }
 
     // http://localhost:8080/addcategory
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/addcategory")
     public String addCategory(Model model) {
         model.addAttribute("category", new Category());
@@ -35,7 +37,7 @@ public class CategoryController {
         return "addcategory"; // addcategory.html
     }
 
-    // tallentaa lomakkeen tiedot ja tallentaa uuden kategorian
+    // Saves form when updating and when saving new category
     @PostMapping("/savecategory")
     public String saveCategory(@ModelAttribute Category category) {
         categoryRepository.save(category);
@@ -43,7 +45,8 @@ public class CategoryController {
         return "redirect:/categorylist"; // categorylist.html
     }
 
-    // Poistaa id:llä kategorian
+    // Deletes category with id number
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/deletecategory/{id}", method = RequestMethod.GET)
     public String deleteCategory(@PathVariable("id") Long categoryId, Model model) {
         categoryRepository.deleteById(categoryId);
@@ -51,8 +54,8 @@ public class CategoryController {
         return "redirect:../categorylist"; // movielist.html
     }
 
-    // Editoi id:llä kategoriaa
-    // @PreAuthorize
+    // Edits category with id number
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/editcategory/{id}")
     public String editCategoryForm(@PathVariable("id") Long categoryId, Model model) {
         model.addAttribute("category", categoryRepository.findById(categoryId));
@@ -60,7 +63,7 @@ public class CategoryController {
         return "editcategory"; // editcategory.html
     }
 
-    // RestController jatkoa
+    // RestController continuing
     @GetMapping("/categories")
     public String categoriesPage() {
         return "categories";

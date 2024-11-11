@@ -30,11 +30,14 @@ public class MovieController {
     @Autowired
     private StreamingServiceRepository streamingServiceRepository;
 
+    // http://localhost:8080/
+    // http://localhost:8080/index
     @GetMapping("/index")
     public String Welcome() {
         return "index"; // index.html
     }
 
+    // http://localhost:8080/login
     @RequestMapping(value = "/login")
     public String login() {
         return "login"; //login.html
@@ -59,7 +62,7 @@ public class MovieController {
         return "addmovie"; // addmovie.html
     }
 
-    // tallentaa lomakkeen tiedot sekä lisäyksessä, että päivittäessä
+    // Saves form when updating and when saving new movie
     @PostMapping("/save")
     public String saveMovie(@ModelAttribute Movie movie) {
         movieRepository.save(movie);
@@ -67,7 +70,7 @@ public class MovieController {
         return "redirect:/movielist";
     }
 
-    // lue lisää elokuvasta
+    // Read more about movie
     @GetMapping("/review/{id}")
     public String review(@PathVariable("id") Long movieId, Model model) {
         Optional<Movie> movieOpt = movieRepository.findById(movieId);
@@ -83,7 +86,7 @@ public class MovieController {
         return "review"; // review.html
     }
 
-    // poistaa id:llä kirjan
+    // Deletes movie with the id number
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteMovie(@PathVariable("id") Long movieId, Model model) {
@@ -92,7 +95,7 @@ public class MovieController {
         return "redirect:../movielist"; // movielist.html
     }
 
-    // editoi id:llä kirjaa
+    // Edits the movie with the id number
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable("id") Long movieId, Model model) {

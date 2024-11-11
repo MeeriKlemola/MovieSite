@@ -1,6 +1,7 @@
 package hh.moviesite.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ public class StreamingServiceController {
     }
 
     // http://localhost:8080/addstreamingservice
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/addstreamingservice")
     public String addStreamingService(Model model) {
         model.addAttribute("streamingservice", new StreamingService());
@@ -35,7 +37,7 @@ public class StreamingServiceController {
         return "addstreamingservice"; // addstreamingservice.html
     }
 
-    // tallentaa lomakkeen tiedot ja tallentaa uuden striimauspalvelun
+    // Saves form when updating and when saving new streaming service
     @PostMapping("/savestreamingservice")
     public String saveStreamingService(@ModelAttribute StreamingService streamingService) {
         streamingServiceRepository.save(streamingService);
@@ -43,8 +45,8 @@ public class StreamingServiceController {
         return "redirect:/streamingservicelist"; // streamingservicelist.html
     }
 
-        // poistaa id:llä striimauspalvelun
-    // @PreAuthorize("hasAuthority('ADMIN')")
+    // Deletes streaming service with id number
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/deletestreamingservice/{id}", method = RequestMethod.GET)
     public String deleteMovie(@PathVariable("id") Long streamingserviceId, Model model) {
         streamingServiceRepository.deleteById(streamingserviceId);
@@ -52,8 +54,8 @@ public class StreamingServiceController {
         return "redirect:../streamingservicelist"; // streamingservicelist.html
     }
 
-        // editoi id:llä kirjaa
-    // @PreAuthorize
+    // Edits streaming service with id number
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/editstreamingservice/{id}")
     public String editServiceForm(@PathVariable("id") Long streamingserviceId, Model model) {
         model.addAttribute("streamingservices", streamingServiceRepository.findById(streamingserviceId));
