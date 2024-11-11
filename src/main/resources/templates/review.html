@@ -33,17 +33,27 @@
                 <td th:text="${movie.category.categoryName}"></td>
                 <td th:text="${movie.rating}"></td>
             </tr>
-            <tr>
-                <th>Description</th>
-                <th>Review</th>
-                <th>Where to watch</th>
-            </tr>
-            <tr th:each="service : ${movie.streamingServices}">
-                <td th:text="${movie.description}"></td>
-                <td th:text="${movie.review}"></td>
-                <td th:text="${service.serviceName}"> </td>
-            </tr>
         </tbody>
+    </table>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Description</th>
+            <th>Review</th>
+        </tr>
+        <tr>
+            <td style="width: 50%" th:text="${movie.description}"></td>
+            <td style="width: 50%" th:text="${movie.review}"></td>
+        </tr>
+    </table>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Where to watch</th>
+        </tr>
+        <tr th:each="service : ${movie.streamingServices}">
+            <td th:text="${service.serviceName}"> </td>
+        </tr>
     </table>
 
     <p><a th:href="@{/movielist}">Back to the list</a></p>

@@ -44,7 +44,7 @@ public class CategoryController {
     }
 
     // Poistaa id:llä kategorian
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deletecategory/{id}", method = RequestMethod.GET)
     public String deleteCategory(@PathVariable("id") Long categoryId, Model model) {
         categoryRepository.deleteById(categoryId);
 
@@ -53,7 +53,7 @@ public class CategoryController {
 
     // Editoi id:llä kategoriaa
     // @PreAuthorize
-    @GetMapping("/edit/{id}")
+    @GetMapping("/editcategory/{id}")
     public String editCategoryForm(@PathVariable("id") Long categoryId, Model model) {
         model.addAttribute("category", categoryRepository.findById(categoryId));
 
