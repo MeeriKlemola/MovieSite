@@ -106,7 +106,7 @@ public class MoviesiteApplication {
 				log.info(movie.toString());
 			}
 
-			AppUser admin = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			AppUser admin = new AppUser("admin", "$2y$10$eSg5pFxPNiEf1VLCaz74u.Dz7cW8SeOrgDR1rOnN08KtgoNNPfBle", "ADMIN");
 			appUserRepository.save(admin);
 
 		};

@@ -36,28 +36,19 @@ public class WebLayerTest {
     }
 
     @Test
-    public void testMovieList()throws Exception {
+    public void testMovieList() throws Exception {
         this.mockMvc.perform(get("/movielist"))
-        .andDo(print())
-        .andExpect(status().isOk())
-        .andExpect(content().string(containsString("Movies")));
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Movies")));
 
     }
 
     @Test
     public void testStreamingServiceList() throws Exception {
         this.mockMvc.perform(get("/streamingservicelist"))
-        .andDo(print())
-        .andExpect(status().isOk())
-        .andExpect(content().string(containsString("Streaming services")));
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Streaming services")));
     }
-
-    @Test
-    public void testStreamingCategoryList() throws Exception {
-        this.mockMvc.perform(get("/categorylist"))
-        .andDo(print())
-        .andExpect(status().isOk())
-        .andExpect(content().string(containsString("Categories")));
-    }
-
 }

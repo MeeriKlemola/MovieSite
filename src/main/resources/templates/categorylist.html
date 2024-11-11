@@ -23,16 +23,18 @@
                 <th>Name</th>
             </tr>
         </thead>
-        <tr th:each="category : ${categories}">
-            <td th:text="${category.categoryId}"> </td>
-            <td th:text="${category.categoryName}"> </td>
-        </tr>
-        <td>
-            <a th:href="@{/editcategory/{id}(id=${category.categoryId})}" class="btn btn-warning" 
-                role="button">Edit</a>
-            <a th:href="@{/deletecategory/{id}(id=${category.categoryId})}" class="btn btn-danger"
-                role="button">Delete</a>
-        </td>
+        <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.categoryId}"> </td>
+                <td th:text="${category.categoryName}"> </td>
+                <td>
+                    <a th:href="@{/editcategory/{id}(id=${category.categoryId})}" class="btn btn-warning"
+                        role="button">Edit</a>
+                    <a th:href="@{/deletecategory/{id}(id=${category.categoryId})}" class="btn btn-danger"
+                        role="button">Delete</a>
+                </td>
+            </tr>
+        </tbody>
     </table>
     <p><a th:href="@{/addcategory}" class="btn btn-success" role="button">Add category</a></p>
 
