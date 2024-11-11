@@ -8,6 +8,10 @@
         body {
             margin: 10px;
         }
+
+        p {
+            font-size: larger;
+        }
     </style>
 </head>
 
@@ -16,10 +20,10 @@
     <p>Are you in the mood to browse through a couple of my favourite movies or watch one yourself and see where they are streaming? Click on the icon!</p>
 
     <a th:href="@{/movielist}">
-        <img src="/images/film.png" alt="film roll">
+        <img src="/images/film.png" alt="film roll" title="To the movie list!" style="padding-left: 4cm;">
     </a>
     <a th:href="@{/streamingservicelist}">
-        <img src="/images/stream.png" alt="3d glasses">
+        <img src="/images/stream.png" alt="3d glasses" title="To the streamingservice list!" style="padding-left: 3cm;">
     </a>
 
     <!-- These pictures are copyright free and they are from pixabay from the "Jozefm84" account. -->
