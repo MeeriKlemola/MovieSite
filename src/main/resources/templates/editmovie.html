@@ -68,12 +68,14 @@
             </select>
         </div>
 
-        <div class="form-group"> 
-            <label for="streamingServiceList">Streamingservice</label>
-            <select id="streamingServiceList" th:field="*{streamingServices}" class="form-control">
-                <option th:each="streamingservice : ${streamingservices}" th:value="${streamingservice.id}"
-                    th:text="${streamingservice.serviceName}"></option>
-            </select>
+        <div class="form-group">
+            <label>Streaming Services</label>
+            <div th:each="streamingservice : ${streamingservices}">
+                <label>
+                    <input type="checkbox" th:field="*{streamingServices}" th:value="${streamingservice.id}" />
+                    <span th:text="${streamingservice.serviceName}"></span>
+                </label>
+            </div>
         </div>
 
         <button type="submit">Update</button>

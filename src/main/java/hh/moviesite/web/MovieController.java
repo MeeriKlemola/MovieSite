@@ -40,7 +40,7 @@ public class MovieController {
     // http://localhost:8080/login
     @RequestMapping(value = "/login")
     public String login() {
-        return "login"; //login.html
+        return "login"; // login.html
     }
 
     // http://localhost:8080/movielist
@@ -99,7 +99,10 @@ public class MovieController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable("id") Long movieId, Model model) {
-        model.addAttribute("movie", movieRepository.findById(movieId));
+        Movie movie = movieRepository.findById(movieId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid movie Id:" + movieId));
+
+        model.addAttribute("movie", movie);
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("streamingservices", streamingServiceRepository.findAll());
 
