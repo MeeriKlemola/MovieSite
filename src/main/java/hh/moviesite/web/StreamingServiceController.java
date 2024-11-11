@@ -57,8 +57,10 @@ public class StreamingServiceController {
     // Edits streaming service with id number
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/editstreamingservice/{id}")
-    public String editServiceForm(@PathVariable("id") Long streamingserviceId, Model model) {
-        model.addAttribute("streamingservices", streamingServiceRepository.findById(streamingserviceId));
+    public String editServiceForm(@PathVariable("id") Long id, Model model) {
+        StreamingService streamingService = streamingServiceRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid streaming service Id:" + id));
+        model.addAttribute("streamingservice", streamingService);
 
         return "editstreamingservice"; // editstreamingservice.html
     }

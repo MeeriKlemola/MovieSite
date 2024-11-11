@@ -21,7 +21,7 @@
 <body>
     <h1>Add a streaming service</h1>
     <div>
-        <form th:object="${streamingservice}" th:action="@{/save}" method="post">
+        <form th:object="${streamingservice}" th:action="@{/savestreamingservice}" method="post">
             <div class="form-group">
                 <label for="serviceName">Name</label>
                 <input type="text" id="serviceName" th:field="*{serviceName}" />
